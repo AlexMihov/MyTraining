@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Just testing</title>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body ng-app="TestApp">
+    <div id="mainContainer" ng-controller="TestController" class="jumbotron">
+        <h1>Your Training</h1>
+        <button class="trainingChooser btn btn-primary" ng-click="zweierSplit()">2er Split</button>
+        <button class="trainingChooser btn btn-primary" ng-click="dreierSplit()">3er Split</button>
+        <div class="exercise list-group" ng-repeat-start="t in training" data="{{$index}}">
+            <div class="name alert list-group-item" role="alert"><b>{{t.name}}</b></div>
+            <div class="reps list-group-item">Reps: {{t.reps}}</div>
+            <div class="weight list-group-item" ng-repeat-end>Weight: {{t.weight}} kg</div>
+            <button class="btn btn-success completedButton" ng-click="markRead($event)">Completed!</button>
+            <button class="btn btn-danger removeButton" ng-click="removeExercise($index)">Remove</button>
+        </div>
+        <div ng-repeat-end></div>
+        <input id="newEx" type="text" ng-model="yourName" placeholder="Enter the name of the exercise">
+        <input type="number" ng-model="yourReps" placeholder="Enter number of reps">
+        <input type="number" ng-model="yourWeight" placeholder="Enter the weight">
+        <button id="addButton" ng-click="addOneMore()">Add a new training</button>
+    </div>
+</body>
+
+</html>
